@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title style="color: magenta;">Clever Kids Edusite - Homepage</title>
+
+<style>
+/* Make the page stretch and push footer down */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-image: url(images/kenny-eliason-zFSo6bnZJTw-unsplash.jpg);
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+
+.main-content {
+  flex: 1;
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+  padding: 20px 0;
+}
+nav{
+    background-color: rgb(62, 62, 160);
+    padding: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  background: darkblue;
+}
+
+/* HEADER TEXT */
+h2 {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
+  color: rgb(58, 9, 9);
+}
+
+/* FOOTER */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="library.html">Library</a></li>
+    <li><a href="contact-us.html">Contact Us</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    <li><a href="navigate-us.html">Navigate Us</a></li>
+    <li><a href="QUIZ.html">QUIZ</a></li>
+  </ul>
+</nav>
+
+<div class="main-content">
+  <h2 style="color: magenta;">CleverKids-EduWebsite.<br>Welcome!</h2>
+</div>
+<footer>
+  <p style="color: aqua;">&copy; 2025 CleverKids. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBC Kenya Junior Secondary School Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            background-image: url('images/element5-digital-OyCl7Y4y0Bk-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid darkblue;
+            padding-bottom: 15px;
+        }
+
+        .quiz-header h1 {
+            color: darkblue;
+            margin: 0 0 10px 0;
+            font-size: 32px;
+        }
+
+        .quiz-header p {
+            color: #666;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .question-section {
+            margin-bottom: 25px;
+        }
+
+        .question-number {
+            color: #003366;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            color: darkblue;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-label:hover {
+            background: #e8f0f7;
+            border-color: #003366;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .option-text {
+            flex: 1;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit {
+            background: darkblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background: #1a3d7a;
+        }
+
+        .btn-reset {
+            background: #666;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #444;
+        }
+
+        .result-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .result-section.passed {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .result-section.failed {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        .result-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-message {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .progress-bar {
+            margin-bottom: 20px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            background: #ddd;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill-bar {
+            background: darkblue;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+       nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+  padding: 20px 0;
+}
+nav{
+    background-color: rgb(62, 62, 160);
+    padding: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  background: darkblue;
+}
+
+/* HEADER TEXT */
+h2 {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
+  color: rgb(58, 9, 9);
+}
+
+/* FOOTER */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+} 
+    </style>
+</head>
+<body class="quiz-page">
+    <header>
+        <h1 style="color: magenta;">Cleverkids Eduwebsite</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About-us.html">About Us</a></li>
+                <li><a href="library.html">Library</a></li>
+                <li><a href="QUIZ.html">Quiz</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="dashboard.html">dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>CBC Kenya Junior Secondary School Quiz</h1>
+            <p>Test your knowledge on various subjects taught in Junior Secondary (Grades 7-9)</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-text">Progress: <span id="current-question">1</span> of <span id="total-questions">10</span></div>
+            <div class="progress-fill">
+                <div class="progress-fill-bar" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <form id="quiz-form">
+            <!-- Questions will be dynamically inserted here -->
+        </form>
+
+        <div class="controls">
+            <button type="button" class="btn-submit" onclick="submitQuiz()">Submit Quiz</button>
+            <button type="button" class="btn-reset" onclick="resetQuiz()">Reset</button>
+        </div>
+
+        <div class="result-section" id="result-section">
+            <div class="result-title" id="result-title"></div>
+            <div class="result-message" id="result-message"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: aqua;">&copy; 2024 Cleverkids eduwebsite. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Quiz questions - CBC Kenya Junior Secondary School topics
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "What is the capital city of Kenya?",
+                category: "Geography",
+                options: [
+                    "Mombasa",
+                    "Nairobi",
+                    "Kisumu",
+                    "Nakuru"
+                ],
+                correctAnswer: 1
+            },
+            {
+                id: 2,
+                question: "Which of the following is NOT a major lake in Kenya?",
+                category: "Geography",
+                options: [
+                    "Lake Nairobi",
+                    "Lake Turkana",
+                    "Lake Victoria",
+                    "Lake Nakuru"
+                ],
+                correctAnswer: 0
+            },
+            {
+                id: 3,
+                question: "In which year did Kenya gain independence?",
+                category: "History",
+                options: [
+                    "1960",
+                    "1962",
+                    "1965",
+                    "1964"
+                ],
+                correctAnswer: 3
+            },
+            {
+                id: 4,
+                question: "Who was the first President of independent Kenya?",
+                category: "History",
+                options: [
+                    "Daniel arap Moi",
+                    "Jomo Kenyatta",
+                    "Mwai Kibaki",
+                    "Uhuru Kenyatta"
+                ],
+                correctAnswer: 1
+            },
+            {
+                id: 5,
+                question: "What is the largest organ in the human body?",
+                category: "Biology",
+                options: [
+                    "Heart",
+                    "Brain",
+                    "Skin",
+                    "Liver"
+                ],
+                correctAnswer: 2
+            },
+            {
+                id: 6,
+                question: "Which process do plants use to make their own food?",
+                category: "Biology",
+                options: [
+                    "Respiration",
+                    "Photosynthesis",
+                    "Digestion",
+                    "Fermentation"
+                ],
+                correctAnswer: 1
+            },
+            {
+                id: 7,
+                question: "What is the chemical symbol for Gold?",
+                category: "Chemistry",
+                options: [
+                    "Go",
+                    "Gd",
+                    "Au",
+                    "Ag"
+                ],
+                correctAnswer: 2
+            },
+            {
+                id: 8,
+                question: "How many sides does a hexagon have?",
+                category: "Mathematics",
+                options: [
+                    "4",
+                    "5",
+                    "6",
+                    "8"
+                ],
+                correctAnswer: 2
+            },
+            {
+                id: 9,
+                question: "What is the square root of 144?",
+                category: "Mathematics",
+                options: [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                correctAnswer: 2
+            },
+            {
+                id: 10,
+                question: "Which of the following is an example of a renewable energy source?",
+                category: "Environmental Studies",
+                options: [
+                    "Coal",
+                    "Natural Gas",
+                    "Solar Power",
+                    "Petroleum"
+                ],
+                correctAnswer: 2
+            }
+        ];
+
+        // Initialize quiz on page load
+        window.addEventListener('DOMContentLoaded', initializeQuiz);
+
+        function initializeQuiz() {
+            const quizForm = document.getElementById('quiz-form');
+            quizForm.innerHTML = '';
+
+            // Set total questions
+            document.getElementById('total-questions').textContent = quizQuestions.length;
+
+            // Create form sections for each question
+            quizQuestions.forEach((q, index) => {
+                const questionSection = document.createElement('div');
+                questionSection.className = 'question-section';
+                questionSection.id = `question-${q.id}`;
+
+                let optionsHTML = '';
+                q.options.forEach((option, optionIndex) => {
+                    optionsHTML += `
+                        <label class="option-label">
+                            <input type="radio" name="question-${q.id}" value="${optionIndex}" onchange="updateProgress()">
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `;
+                });
+
+                questionSection.innerHTML = `
+                    <div class="question-number">Question ${index + 1} - ${q.category}</div>
+                    <div class="question">${q.question}</div>
+                    <div class="options">
+                        ${optionsHTML}
+                    </div>
+                `;
+
+                quizForm.appendChild(questionSection);
+            });
+        }
+
+        function updateProgress() {
+            const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+            const total = quizQuestions.length;
+            const percentage = (answered / total) * 100;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('current-question').textContent = answered;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            let answered = 0;
+
+            quizQuestions.forEach((question) => {
+                const selectedOption = document.querySelector(`input[name="question-${question.id}"]:checked`);
+                if (selectedOption) {
+                    answered++;
+                    const selectedValue = parseInt(selectedOption.value);
+                    if (selectedValue === question.correctAnswer) {
+                        score++;
+                    }
+                }
+            });
+
+            if (answered === 0) {
+                alert('Please answer at least one question before submitting!');
+                return;
+            }
+
+            const percentage = (score / quizQuestions.length) * 100;
+            const resultSection = document.getElementById('result-section');
+            const resultTitle = document.getElementById('result-title');
+            const resultMessage = document.getElementById('result-message');
+
+            resultSection.classList.remove('passed', 'failed');
+            resultSection.classList.add('show');
+
+            if (percentage >= 70) {
+                resultSection.classList.add('passed');
+                resultTitle.textContent = `🎉 Congratulations!`;
+                resultMessage.innerHTML = `
+                    <p><strong>You scored ${score} out of ${quizQuestions.length} (${percentage.toFixed(1)}%)</strong></p>
+                    <p>Excellent performance! You have a strong understanding of the material.</p>
+                `;
+            } else if (percentage >= 50) {
+                resultSection.classList.add('passed');
+                resultTitle.textContent = `✓ Good Job!`;
+                resultMessage.innerHTML = `
+                    <p><strong>You scored ${score} out of ${quizQuestions.length} (${percentage.toFixed(1)}%)</strong></p>
+                    <p>You passed! Review the topics you found challenging to improve further.</p>
+                `;
+            } else {
+                resultSection.classList.add('failed');
+                resultTitle.textContent = `Review Required`;
+                resultMessage.innerHTML = `
+                    <p><strong>You scored ${score} out of ${quizQuestions.length} (${percentage.toFixed(1)}%)</strong></p>
+                    <p>Keep studying! Review the material and try again to improve your score.</p>
+                `;
+            }
+
+            // Scroll to result
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-form').reset();
+            document.getElementById('result-section').classList.remove('show');
+            document.getElementById('progress-bar').style.width = '0%';
+            document.getElementById('current-question').textContent = '0';
+        }
+    </script>
+</body>
+</html>

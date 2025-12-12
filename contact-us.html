@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us - Educational Website</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="library.html">Library</a></li>
+    <li><a href="contact-us.html">Contact Us</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    <li><a href="navigate-us.html">Navigate Us</a></li>
+    <li><a href="QUIZ.html">QUIZ</a></li>
+  </ul>
+</nav>
+<div class="contact-container">
+<h2>Contact Us</h2>
+
+<div id="success" class="success-message">Message Sent Successfully!</div>
+
+<div id="success" class="success-message">Message Sent Successfully!</div>
+
+<form id="contactForm" onsubmit="sendMessage(event)">
+    <label>Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <label>Email Address</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
+
+    <label>Message</label>
+    <textarea id="message" rows="4" placeholder="Write your message here..." required></textarea>
+
+</form>
+<a href="mailto:decyogeta@outlook.com">
+    <button type="submit">Send Message</button>
+    </a>
+
+<div class="info">
+    <p><strong>Phone:</strong> +254 700 000 000</p>
+    <p><strong>Email:</strong> info@cleverkidswebsite.com</p>
+    <p><strong>Address:</strong> Nairobi, Kenya</p>
+</div>
+</div>
+
+<script>
+function sendMessage(event) {
+    event.preventDefault(); // stop page reload
+
+    document.getElementById("success").style.display = "block";
+
+    // clear fields
+    document.getElementById("contactForm").reset();
+}
+</script>
+  <footer>
+            <p style="color: aqua;">&copy; 2025 cleverkids.All Rights Reserved.</p>
+        </footer>
+</body>
+</html>
